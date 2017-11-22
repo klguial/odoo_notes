@@ -7,4 +7,9 @@ Softawres:
 
 # Odoo service reminders
 ODOO DB PASS  
-P@SSW0RD
+P@SSW0RD  
+```bash
+ssh tk@192.168.10.100
+tk
+sudo su
+```
