@@ -1,5 +1,5 @@
-Pentaho query sample
-----------------
+## Pentaho query sample
+```sql
 SELECT
     ROW_NUMBER() OVER(ORDER BY purchase_order_line.name ASC) as prod_no,
     TO_CHAR(purchase_order.create_date, 'dd-Mon-YYYY') as create_date,
@@ -23,3 +23,4 @@ INNER JOIN
         INNER JOIN res_users ON res_users.partner_id = res_partner.id) as subquery
     ON subquery.id = purchase_order.create_uid
 WHERE purchase_order.id in (${ids})
+```
