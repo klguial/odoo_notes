@@ -31,9 +31,16 @@ telinit 6 #restart
 /opt/odoo9/server/openerp-server -c /etc/odoo9-server.conf --addons-path=/opt/odoo9/custom/addons,/opt/odoo9/custom/
 ```
 
-
 # Pentaho Reports for OpenERP Installation
 1. add pentaho-reports folder in the same directory as the new module
 2. install manually
-3. check if requiremnt file /var/lib/tomcat7/webapps/perntaho-reports-for-openerp.war exists
+3. check if requiremnt file `/var/lib/tomcat7/webapps/perntaho-reports-for-openerp.war` exists
 4. install at destination using `wget http://toolkt.com/files/pentaho-reports-for-openerp`
+
+# Pentaho Reports Parameter Usage
+type | value
+--- | ---
+name | ids
+label | ids
+value typye | object
+
