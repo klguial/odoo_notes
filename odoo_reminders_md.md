@@ -45,7 +45,6 @@ label | ids
 value typye | object
 
 # Navicat DB Connection config
-Navicat
 -------------------
 ### odoo
 name: odoo9  
