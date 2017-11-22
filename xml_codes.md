@@ -32,7 +32,6 @@
 </record>
 <menuitem id="trident_pur_req_menu" parent="trident_pur_req_main_menu" action="trident_pur_req_action"/>
 ```
-
 ## Edit form view
 ```xml
 <record id="trident_pur_req_form" model="ir.ui.view">
