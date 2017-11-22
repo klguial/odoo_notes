@@ -42,8 +42,7 @@ name | ids
 label | ids
 value typye | object
 
-# Navicat DB Connection config
--------------------
+# Navicat db connection config
 ### odoo
 name: odoo9  
 host: (virtual ip) 192.168.192.128  
