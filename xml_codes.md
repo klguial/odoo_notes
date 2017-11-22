@@ -1,5 +1,5 @@
-Add new pentaho report
--------------------------
+## Add new pentaho report
+```xml
 <record id="pur_req_report" model="ir.actions.report.xml">
     <field name="name">Pentaho Purchase Requisition Slip</field>
     <field name="report_name">Purchase Requisition Slip</field>
@@ -13,13 +13,14 @@ Add new pentaho report
     <field name="is_pentaho_report" eval="True"/>
     <field name="pentaho_load_file" eval="True"/>
 </record>
-
-Add new menu item
--------------------------
+```
+##Add new menu item
+```xml
 <menuitem id="trident_pur_req_main_menu" name="Purchase Requisition" parent="hr.menu_hr_root" group="" sequence=""/>
+```
 
-Add new menu action
--------------------------
+## Add new menu action
+```xml
 <record id="trident_pur_req_action" model="ir.actions.act_window">
     <field name="name">Purchase Requisition</field>
     <field name="res_model">trident.pur.req</field>
@@ -30,9 +31,10 @@ Add new menu action
     </field>
 </record>
 <menuitem id="trident_pur_req_menu" parent="trident_pur_req_main_menu" action="trident_pur_req_action"/>
+```
 
-Edit form view
--------------------------
+## Edit form view
+```xml
 <record id="trident_pur_req_form" model="ir.ui.view">
     <field name="name">trident.pur.req.form</field>
     <field name="model">trident.pur.req</field>
@@ -64,3 +66,4 @@ Edit form view
         </form>
     </field>
 </record>
+```
