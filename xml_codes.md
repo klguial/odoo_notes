@@ -14,7 +14,7 @@
     <field name="pentaho_load_file" eval="True"/>
 </record>
 ```
-##Add new menu item
+## Add new menu item
 ```xml
 <menuitem id="trident_pur_req_main_menu" name="Purchase Requisition" parent="hr.menu_hr_root" group="" sequence=""/>
 ```
