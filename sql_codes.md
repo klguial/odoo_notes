@@ -12,6 +12,7 @@ SELECT
     TO_CHAR(purchase_order.date_order, 'dd-Mon-YYYY') as date_need,
     res_company.name as company_name,
     -- for displaying dynamic images in pentaho
+    -- 'string'::text means to CAST
     decode(replace(encode(res_company.logo_web,'escape')::text,E'\012',''),'base64') as company_logo,
     subquery.name as user_name
 FROM purchase_order
