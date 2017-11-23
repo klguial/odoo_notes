@@ -23,5 +23,5 @@ INNER JOIN
         FROM res_partner
         INNER JOIN res_users ON res_users.partner_id = res_partner.id) as subquery
     ON subquery.id = purchase_order.create_uid
-WHERE purchase_order.id in (${ids})
+WHERE purchase_order.id in (${ids}) --- ${ids} calls the parameter ids set in pentaho RD
 ```
