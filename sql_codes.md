@@ -21,5 +21,5 @@ INNER JOIN
 		FROM res_partner
 		INNER JOIN res_users ON res_users.partner_id = res_partner.id) as subquery
 	ON subquery.id = purchase_order.create_uid
-WHERE purchase_order.id in (2,3,6)
+WHERE purchase_order.id in (${ids})
 ```
