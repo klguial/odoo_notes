@@ -65,9 +65,8 @@ for rec in products:
 ```python
 number = 24
 '{0:05d}'.format(number)
-> '00024'
 ```
-
+output `'00024'`
 
 
 
