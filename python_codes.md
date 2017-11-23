@@ -46,6 +46,18 @@ AND (country is Belgium OR Germany)
 In python there is no `null` value. Instead, we can use `None` when writing openerp domains.  
 Note that by default, python domain `False` get records with either `NULL` or `False` value.
 
-
-
+### using `self.env[]` vs using sql in python
+```python
+productVariants = self.env['product.product']
+products = productVariants.search([])
+for rec in products:
+     print "product name ..", rec.name
+```
+is similar to 
+```python
+cr.execute("select * from product_product")
+products = cr.dictfetchall()
+for rec in products:
+    print rec['name']
+```
 
