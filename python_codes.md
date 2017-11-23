@@ -66,7 +66,7 @@ for rec in products:
 number = 24
 '{0:05d}'.format(number)
 ```
-output `'00024'`
+output `'00024'`. See [Format Specification Mini-Language](https://docs.python.org/3.4/library/string.html#format-specification-mini-language)
 
 
 
