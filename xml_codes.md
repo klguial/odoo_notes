@@ -76,3 +76,8 @@
 
 <button string="Cancel" class="oe_link" special="cancel"/>
 ```
+
+### status bar
+```xml
+<field name="status" widget="statusbar" statusbar_visible="draft,submitted,for_dr_conf_sending,for_dr_conf,confirmed_dr,for_delivery_conf,confirmed_del,enroute,received,done"/>
+```
