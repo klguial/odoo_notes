@@ -63,3 +63,8 @@ pwd: postgres
 ```bash
 pg_restore -U postgres -d dvdrental
 ```
+
+### multiple selected records, different report per id
+Put the whole form inside the group.  
+Configure group settings to be grouped by `id`  
+Set `pagebreak-after` to `true`  
