@@ -73,4 +73,6 @@
 <button name="apply_to_all_lc" icon="fa-refresh" class="oe_stat_button" string="Set to All" confirm="All records will have these same settings" type="object" />
 
 <button name="create_po"  string="Confirm" type="object" class="oe_highlight" confirm="Are you sure you APPROVE of this step?"  attrs="{'invisible':[('status','!=','draft')]}"/>
+
+<button string="Cancel" class="oe_link" special="cancel"/>
 ```
