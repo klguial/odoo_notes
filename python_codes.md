@@ -27,3 +27,18 @@ id | name | model_id:id | group_id:id | perm_read | perm_write | perm_create | p
 --- | --- | --- | --- | --- | --- | --- | ---
 access_csr_dmpi_po_distributor | csr.dmpi.po.distributor | model_dmpi_po_distributor | group_dmpi_po_csr | 1 | 1 | 0 | 0
 access_opn_dmpi_po_distributor | opn.dmpi.po.distributor | model_dmpi_po_distributor | group_dmpi_po_opn | 1 | 0 | 0 | 0
+
+### domains sample
+```python
+[('name','=','ABC'),
+ ('language.code','!=','en_US'),
+ '|',('country_id.code','=','be'),
+     ('country_id.code','=','de')]
+```
+is interpreted as
+```sql
+    (name is 'ABC')
+AND (language is NOT english)
+AND (country is Belgium OR Germany)
+```
+
