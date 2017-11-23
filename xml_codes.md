@@ -1,4 +1,4 @@
-### Add new pentaho report
+### create pentaho report
 ```xml
 <record id="pur_req_report" model="ir.actions.report.xml">
     <field name="name">Pentaho Purchase Requisition Slip</field>
@@ -14,12 +14,13 @@
     <field name="pentaho_load_file" eval="True"/>
 </record>
 ```
-## Add new menu item
+
+### create menu
 ```xml
 <menuitem id="trident_pur_req_main_menu" name="Purchase Requisition" parent="hr.menu_hr_root" group="" sequence=""/>
 ```
 
-## Add new menu action
+### add action to menus
 ```xml
 <record id="trident_pur_req_action" model="ir.actions.act_window">
     <field name="name">Purchase Requisition</field>
@@ -32,7 +33,8 @@
 </record>
 <menuitem id="trident_pur_req_menu" parent="trident_pur_req_main_menu" action="trident_pur_req_action"/>
 ```
-## Edit form view
+
+### create form view
 ```xml
 <record id="trident_pur_req_form" model="ir.ui.view">
     <field name="name">trident.pur.req.form</field>
@@ -65,4 +67,10 @@
         </form>
     </field>
 </record>
+```
+### odoo button samples
+```xml
+<button name="apply_to_all_lc" icon="fa-refresh" class="oe_stat_button" string="Set to All" confirm="All records will have these same settings" type="object" />
+
+<button name="create_po"  string="Confirm" type="object" class="oe_highlight" confirm="Are you sure you APPROVE of this step?"  attrs="{'invisible':[('status','!=','draft')]}"/>
 ```
