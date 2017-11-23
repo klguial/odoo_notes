@@ -110,3 +110,28 @@
     </field>
 </record>
 ```
+
+### inherit a view
+```xml
+<record model="ir.ui.view" id="partner_instructor_form_view">
+    <field name="name">partner.author_publishers</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+        <notebook position="inside">
+            <page string="Library">
+                <group>
+                    <field name="published_book_ids" widget="one2many_tags"/>
+                    <field name="authored_book_ids" widget="many2many_tags"/>
+                    <field name="count_auth_books" readonly="True"/>
+                </group>
+            </page>
+        </notebook>
+    </field>
+</record>
+<record id="library_res_partner_action" model="ir.actions.act_window">
+    <field name="name">Authors and Publishers</field>
+    <field name="res_model">res.partner</field>
+    <field name="view_mode">tree,form</field>
+</record>
+```
