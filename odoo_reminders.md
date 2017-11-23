@@ -1,11 +1,11 @@
-## Odoo installation 
+### Odoo installation 
 Softawres:  
 - VMWare Workstation 14 Player
 - Ubuntu Odoo Image File
 - Navicat for Postgres
 - Pentaho Report Designer
 
-## Odoo service reminders
+### Odoo service reminders
 ODOO DB PASS: `P@SSW0RD`  
 ```bash
 ssh tk@192.168.10.100
@@ -29,28 +29,28 @@ telinit 6 #restart
 /opt/odoo9/server/openerp-server -c /etc/odoo9-server.conf --addons-path=/opt/odoo9/custom/addons,/opt/odoo9/custom/
 ```
 
-## Pentaho Reports for OpenERP Installation
+### Pentaho Reports for OpenERP Installation
 1. add pentaho-reports folder in the same directory as the new module
 2. install manually
 3. check if requiremnt file `/var/lib/tomcat7/webapps/perntaho-reports-for-openerp.war` exists
 4. install at destination using `wget http://toolkt.com/files/pentaho-reports-for-openerp.war`
 
-## Pentaho Reports Parameter Usage
+### Pentaho Reports Parameter Usage
 type | value
 --- | ---
 name | ids
 label | ids
 value typye | object
 
-## Navicat db connection config
-### odoo
+### Navicat db connection config
+**odoo**
 name: odoo9  
 host: (virtual ip) 192.168.192.128  
 post: 5432  
 initial database: postgres  
 username: odoomgr  
 pwd: odoomgr  
-### localhost
+**localhost**
 name: odoo9  
 host: localhost  
 post: 5432  
