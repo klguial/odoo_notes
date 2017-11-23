@@ -14,7 +14,7 @@ SELECT
     -- for displaying dynamic images in pentaho
     -- 'string'::TEXT means to CAST
     decode(replace(encode(res_company.logo_web,'escape')::TEXT,E'\012',''),'base64') AS company_logo,
-    subquery.name as user_name
+    subquery.name AS user_name
 FROM purchase_order
 INNER JOIN purchase_order_line ON purchase_order.id = purchase_order_line.order_id
 INNER JOIN res_company ON purchase_order.company_id = res_company.id
