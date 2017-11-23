@@ -58,3 +58,8 @@ post: 5432
 initial database: postgres  
 username: postgres  
 pwd: postgres  
+
+### restore a zip file database
+```bash
+pg_restore -U postgres -d dvdrental
+```
