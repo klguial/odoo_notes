@@ -64,7 +64,7 @@ pwd: postgres
 pg_restore -U postgres -d dvdrental
 ```
 
-### multiple selected records, different report per id
+### pentaho: configure multiple selected records, different report per id
 Put the whole form inside the group.  
 Configure group settings to be grouped by `id`  
-Set `pagebreak-after` to `true`  
+Set `pagebreak-after` (or `pagebreak-before`) to `true` in the style settings for group
