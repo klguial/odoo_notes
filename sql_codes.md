@@ -1,4 +1,4 @@
-## Pentaho query sample
+### Pentaho query sample
 ```sql
 SELECT
     ROW_NUMBER() OVER(ORDER BY purchase_order_line.name ASC) as prod_no,
