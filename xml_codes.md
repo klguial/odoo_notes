@@ -81,3 +81,32 @@
 ```xml
 <field name="status" widget="statusbar" statusbar_visible="draft,submitted,for_dr_conf_sending,for_dr_conf,confirmed_dr,for_delivery_conf,confirmed_del,enroute,received,done"/>
 ```
+
+### edit tree view
+```xml
+<record id="library_book_view_tree" model="ir.ui.view">
+    <field name="name">library.book.tree</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="date_release"/>
+        </tree>
+    </field>
+</record>
+```
+
+### add search view
+```xml
+<record id="library_book_view_search" model="ir.ui.view">
+    <field name="name">Library Book Search</field>
+    <field name="model">library.book</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="date_release"/>
+            <field string="No Authors" domain="[('author_ids','=','False')]"/>
+        </search>
+    </field>
+</record>
+```
