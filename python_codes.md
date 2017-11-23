@@ -42,3 +42,10 @@ AND (language is NOT english)
 AND (country is Belgium OR Germany)
 ```
 
+### domains for records with NULL value
+In python there is no `null` value. Instead, we can use `None` when writing openerp domains.  
+Note that by default, python domain `False` get records with either `NULL` or `False` value.
+
+
+
+
