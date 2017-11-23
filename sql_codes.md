@@ -10,6 +10,7 @@ SELECT
 	purchase_order.name as quote_no,
 	TO_CHAR(purchase_order.date_order, 'dd-Mon-YYYY') as order_date,
 	res_company.name as company_name,
+	--- for dynamic images in pentaho reports
 	decode(replace(encode(res_company.logo_web,'escape')::text,E'\012',''),'base64') as company_logo,
 	subquery.name as user_name
 FROM purchase_order
