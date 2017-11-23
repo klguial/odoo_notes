@@ -43,14 +43,15 @@ label | ids
 value typye | object
 
 ### Navicat db connection config
-**odoo**
+**odoo**  
 name: odoo9  
 host: (virtual ip) 192.168.192.128  
 post: 5432  
 initial database: postgres  
 username: odoomgr  
 pwd: odoomgr  
-**localhost**
+  
+**localhost**  
 name: odoo9  
 host: localhost  
 post: 5432  
