@@ -1,4 +1,4 @@
-## Add new pentaho report
+### Add new pentaho report
 ```xml
 <record id="pur_req_report" model="ir.actions.report.xml">
     <field name="name">Pentaho Purchase Requisition Slip</field>
