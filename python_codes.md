@@ -61,3 +61,13 @@ for rec in products:
     print rec['name']
 ```
 
+### pad with zeros
+```python
+number = 24
+'{0:05d}'.format(number)
+> '00024'
+```
+
+
+
+
