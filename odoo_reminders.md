@@ -85,12 +85,26 @@ Set `pagebreak-after` (or `pagebreak-before`) to `true` in the style settings fo
 ### about Trident
 built-in modules needed:  
 
-module name | included modules
---- | ---
+order of installation | module name | included modules
+--- | --- | ---
+1 | **account_accountant** (Accounting and Finance) | account_accountant, account_voucher
+2 | **account_asset** (Assets Management) | account_asset
+3 | **account_budget** (Budgets Management) | account_budget
+4 | **purchase** (Purchase Management) | purchase
+5 | **purchase_requisitions** (Purchase Requisitions) | purchase_requisition
 **sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
-**hr** (Human Resources/Employee) | hr  
+
 **mrp** (Manufacturing Resource Planning) | mrp  
 **stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
-**account_accountant** (Online Billing) | account_accountant, account_voucher
+**hr** (Human Resources/Employee) | hr  
+
+
+Upon installation of **account_accountant**, three app views appear, *messaging*, *accounting*, and *reporting*.  
+Install **account_asset** and **account_budget** to have menus for assets and budgest under accounting.  
+Upon installation of **purchase**, app view *purchases* appear. Under Purchase Manu are Requests for Quotation, Purchase Orders, and Suppliers. Install also **purchase_requisition** to have a Calls for Bid menu under Purchase/Purchase menu
+
+
+
+
 
 
