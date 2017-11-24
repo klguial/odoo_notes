@@ -98,12 +98,13 @@ order of installation | module name | included modules
 **stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
 **hr** (Human Resources/Employee) | hr  
 
-
 Upon installation of **account_accountant**, three app views appear, *messaging*, *accounting*, and *reporting*.  
 Install **account_asset** and **account_budget** to have menus for assets and budgest under accounting.  
 Upon installation of **purchase**, app view *purchases* appear. Under Purchase Manu are Requests for Quotation, Purchase Orders, and Suppliers. Install also **purchase_requisition** to have a Calls for Bid menu under Purchase/Purchase menu. Warehouse app also appears.
 
-
+Procurement-to-Pay process flow
+1. Create Purchase Request slip under HR/Purchase Requisition/Purchase Requisition. The draft is to be approved by Operations Manager.
+2. All submitted requests can be viewes under Purchase/Purchase/Calls for bids
 
 
 
