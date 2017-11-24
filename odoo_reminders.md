@@ -83,7 +83,8 @@ Set `pagebreak-after` (or `pagebreak-before`) to `true` in the style settings fo
 **left-right margin:** 40  
 
 ### about Trident
-built-in modules needed:  
+built-in modules needed:
+module name | included modules
 --- | ---
 **sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
 **hr** (Human Resources/Employee) | hr  
