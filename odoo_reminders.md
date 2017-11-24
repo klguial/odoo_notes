@@ -101,7 +101,7 @@ order of installation | module name | included modules
 
 Upon installation of **account_accountant**, three app views appear, *messaging*, *accounting*, and *reporting*.  
 Install **account_asset** and **account_budget** to have menus for assets and budgest under accounting.  
-Upon installation of **purchase**, app view *purchases* appear. Under Purchase Manu are Requests for Quotation, Purchase Orders, and Suppliers. Install also **purchase_requisition** to have a Calls for Bid menu under Purchase/Purchase menu
+Upon installation of **purchase**, app view *purchases* appear. Under Purchase Manu are Requests for Quotation, Purchase Orders, and Suppliers. Install also **purchase_requisition** to have a Calls for Bid menu under Purchase/Purchase menu. Warehouse app also appears.
 
 
 
