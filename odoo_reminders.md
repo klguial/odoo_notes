@@ -74,3 +74,14 @@ pg_restore -U postgres -d dvdrental
 Put the whole form inside the group.  
 Configure group settings to be grouped by `id`  
 Set `pagebreak-after` (or `pagebreak-before`) to `true` in the style settings for group
+
+### pentaho forms page formatting
+**orientation:** portrait  
+**width:** 612  
+**height:** 504  
+**top-bottom margin:** 30  
+**left-right margin:** 40  
+
+
+
+
