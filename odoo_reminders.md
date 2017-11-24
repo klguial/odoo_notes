@@ -8,7 +8,7 @@ run Ubuntu Odoo Image file on VMWare.
 `cd` to `/opt/files/`  
 download odoo `wget toolkt.com/files/odoo/odoo10.sh` or `odoo9.sh` or `odoo.sh` (odoov8)  
 configure settings. comment out lines for postgresql installation  
-run bahs file `./odoo10.sh`  
+run bash file `./odoo10.sh`  
 go to **192.168.10.100:1069** to open odoo  
 
 ### Odoo service reminders
