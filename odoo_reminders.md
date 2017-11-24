@@ -1,9 +1,14 @@
 ### Odoo installation 
-Softawres:  
+Softawares:  
 - VMWare Workstation 14 Player
 - Ubuntu Odoo Image File
 - Navicat for Postgres
 - Pentaho Report Designer
+run Ubuntu Odoo Image file on VMWare.  
+`cd` to `/opt/files/`  
+download odoo `wget toolkt.com/files/odoo/odoo10.sh` or `odoo9.sh` or `odoo.sh` (odoov8)  
+configure settings. comment out lines for postgresql installation  
+run bahs file `./odoo10.sh`
 
 ### Odoo service reminders
 ODOO DB PASS: `P@SSW0RD`  
