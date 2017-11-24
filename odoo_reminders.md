@@ -91,6 +91,6 @@ module name | included modules
 **hr** (Human Resources/Employee) | hr  
 **mrp** (Manufacturing Resource Planning) | mrp  
 **stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
-**account_voucher** (Online Billing) | account_voucher, account_accountant  
+**account_accountant** (Online Billing) | account_accountant, account_voucher
 
 
