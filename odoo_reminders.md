@@ -84,11 +84,11 @@ Set `pagebreak-after` (or `pagebreak-before`) to `true` in the style settings fo
 
 ### about Trident
 built-in modules needed:  
-**sale** (Sales): included modules are sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
-**hr** (Human Resources/Employee): included modules are hr  
-**mrp** (Manufacturing Resource Planning): included modules are mrp  
-**stock** (Warehouse Management): included modules are stock, stock_account, purchase, purchase_requisition  
-**account_voucher** (Online Billing): included modules are account_voucher, account_accountant  
+**sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
+**hr** (Human Resources/Employee) | hr  
+**mrp** (Manufacturing Resource Planning) | mrp  
+**stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
+**account_voucher** (Online Billing) | account_voucher, account_accountant  
 
 
 
