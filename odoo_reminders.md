@@ -86,11 +86,15 @@ Set `pagebreak-after` (or `pagebreak-before`) to `true` in the style settings fo
 built-in modules needed:
 module name | included modules
 --- | ---
-**sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
 **hr** (Human Resources/Employee) | hr  
 **mrp** (Manufacturing Resource Planning) | mrp  
 **stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
 **account_voucher** (Online Billing) | account_voucher, account_accountant  
 
+module name | included modules
+--- | ---
+**sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
+label | ids
+value typye | object
 
 
