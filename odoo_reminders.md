@@ -90,11 +90,11 @@ order of installation | module name | included modules
 1 | **account_accountant** (Accounting and Finance) | account_accountant, account_voucher
 2 | **account_asset** (Assets Management) | account_asset
 3 | **account_budget** (Budgets Management) | account_budget
-4 | **purchase** (Purchase Management) | purchase
-5 | **purchase_requisitions** (Purchase Requisitions) | purchase_requisition
-6 | **sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
-7 | **mrp** (Manufacturing Resource Planning) | mrp  
-8 | **stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
+4 | **stock** (Warehouse Management) | stock, stock_account, purchase, purchase_requisition  
+5 | **purchase** (Purchase Management) | purchase
+6 | **purchase_requisitions** (Purchase Requisitions) | purchase_requisition
+7 | **sale** (Sales) | sale, portal_sale,  portal_stock, sale_mrp, sale_stock  
+8 | **mrp** (Manufacturing Resource Planning) | mrp  
 9 | **hr** (Human Resources/Employee) | hr  
 
 Upon installation of **account_accountant**, three app views appear, *messaging*, *accounting*, and *reporting*.  
