@@ -196,10 +196,12 @@ Note: check whether it still works without the @api.model decorator
 class PurchaseForm(models.Model):
 	_name = 'purchase.form'
 	name = fields.Char('Form')
-	product_line_ids = fields.One2many('product.line', 'product_id', 'Products', copy=True)
+	product_line_ids = fields.One2many('product.line', 'purchase_id', 'Products', copy=True)
 
 class ProductLine(models.Model):
 	_name = 'product.line'
+	
+	purchase_id = fields.Many2one('purchase.form', string='Purchase Form ID')
 	product_id = fields.Many2one('product.product', string='Product')
 	qty = fields.Integer('Quantity')
 
