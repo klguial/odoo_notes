@@ -1,7 +1,7 @@
 ### Odoo installation 
 Softawares:  
 - VMWare Workstation 14 Player
-- Ubuntu Odoo Image File
+- Ubuntu Odoo Image File (Ubuntu64-14.04.5)
 - Navicat for Postgres
 - Pentaho Report Designer
 run Ubuntu Odoo Image file on VMWare.  
