@@ -184,10 +184,10 @@ name = fields.Char('Ref Number', default=lambda self: self.get_ref_no(), requrie
 
 @api.model
 def get_ref_no(self):
-self._cr.execute('SELECT max(id) FROM mode_name')
-no = self._cr.fetchone()[0] or 1
-ref_no = 'PRS%s' % '{0:05d}'.format(no)
-return ref_no
+	self._cr.execute('SELECT max(id) FROM mode_name')
+	no = self._cr.fetchone()[0] or 1
+	ref_no = 'PRS%s' % '{0:05d}'.format(no)
+	return ref_no
 ```
 
 ## sql_codes
