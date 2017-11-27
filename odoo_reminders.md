@@ -191,6 +191,22 @@ def get_ref_no(self):
 ```
 Note: check whether it still works without the @api.model decorator
 
+### create purchase_form and product_line relationship model
+class PurchaseForm(models.Model):
+	_name = 'purchase.form'
+	name = fields.Char('Form')
+	product_line_ids = fields.One2many('product.line', 'product_id', 'Products', copy=True)
+
+class ProductLine(models.Model):
+	_name = 'product.line'
+	product_id = fields.Many2one('product.product', string='Product')
+	qty = fields.Integer('Quantity')
+
+class Product(models.Model):
+	_name = 'product.product'
+	name = fields.Char('Name')
+	desctiption = fields.Text('Description')
+
 ## sql_codes
 ### Pentaho query sample
 ```sql
