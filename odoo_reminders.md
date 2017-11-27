@@ -177,6 +177,18 @@ number = 24
 ```
 output `'00024'`. See [Format Specification Mini-Language](https://docs.python.org/3.4/library/string.html#format-specification-mini-language)
 
+### default reference number
+```python
+_name = 'model.name'
+name = fields.Char('Ref Number', default=lambda self: self.get_ref_no(), requried=True)
+
+@api.model
+def get_ref_no(self):
+self._cr.execute('SELECT max(id) FROM mode_name')
+no = self._cr.fetchone()[0] or 1
+ref_no = 'PRS%s' % '{0:05d}'.format(no)
+return ref_no
+```
 
 ## sql_codes
 ### Pentaho query sample
