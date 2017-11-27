@@ -372,3 +372,29 @@ where table_name = 'product_template';
 </div>
 <div class="pull-left">
 ```
+
+### one2many editable
+```xml
+<page string="Products">
+    <field name="product_line_ids"> 
+	<tree editable='bottom'>
+	    <field name="product_id"/>
+	    <field name="product_qty"/>
+	    <field name="schedule_date"/>
+	    <!-- <field name="uom"/> -->
+	</tree>
+    </field>
+</page>
+```
+
+
+
+
+
+
+
+
+
+
+
+
