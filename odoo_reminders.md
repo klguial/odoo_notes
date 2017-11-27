@@ -189,6 +189,7 @@ def get_ref_no(self):
 	ref_no = 'PRS%s' % '{0:05d}'.format(no)
 	return ref_no
 ```
+Note: check whether it still works without the @api.model decorator
 
 ## sql_codes
 ### Pentaho query sample
