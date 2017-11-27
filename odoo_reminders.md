@@ -201,7 +201,7 @@ class PurchaseForm(models.Model):
 class ProductLine(models.Model):
 	_name = 'product.line'
 	
-	purchase_id = fields.Many2one('purchase.form', string='Purchase Form ID')
+	purchase_id = fields.Many2one('purchase.form', string='Purchase Form ID', ondelete='cascade')
 	product_id = fields.Many2one('product.product', string='Product')
 	qty = fields.Integer('Quantity')
 
