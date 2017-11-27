@@ -354,11 +354,3 @@ WHERE p_ord.id in (${ids})
     <field name="view_mode">tree,form</field>
 </record>
 ```
-
-
-
-
-
-
-
-
