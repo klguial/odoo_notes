@@ -217,6 +217,12 @@ INNER JOIN
 WHERE p_ord.id in (${ids})
 ```
 
+### get data type information of columns of a table
+```sql
+select column_name, data_type from information_schema.columns
+where table_name = 'product_template';
+```
+
 ## xml_codes
 ### create pentaho report
 ```xml
