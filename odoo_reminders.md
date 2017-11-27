@@ -361,3 +361,14 @@ where table_name = 'product_template';
     <field name="view_mode">tree,form</field>
 </record>
 ```
+
+### html label view
+```xml
+<div class="pull-left">
+    <label for="name" class="oe_edit_only oe_inline"/>
+    <h1>
+	<field name="name" class="oe_inline" attrs="{'readonly': [('state','not in',('draft'))]}"/>
+    </h1>
+</div>
+<div class="pull-left">
+```
