@@ -106,6 +106,12 @@ Procurement-to-Pay process flow
 1. Create Purchase Request slip under HR/Purchase Requisition/Purchase Requisition. The draft is to be approved by Operations Manager.
 2. All submitted requests can be viewes under Purchase/Purchase/Calls for bids
 
+### pre-installed modules upon creation of db
+base, base_import  
+im_chat, im_odoo_support  
+web_apps (kanban, graph, etc)  
+report, bus, auth_crypt  
+
 ## python_codes
 ### Manifest file input
 ```python
