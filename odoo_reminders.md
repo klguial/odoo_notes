@@ -100,14 +100,16 @@ order of installation | module name | included modules
 
 *Install First before adding on dependencies in the module to remove unwanted additional views/menus*
 
-
 Upon installation of **account_accountant**, three app views appear, *messaging*, *accounting*, and *reporting*.  
 Install **account_asset** and **account_budget** to have menus for assets and budgest under accounting.  
 Upon installation of **purchase**, app view *purchases* appear. Under Purchase Manu are Requests for Quotation, Purchase Orders, and Suppliers. Install also **purchase_requisition** to have a Calls for Bid menu under Purchase/Purchase menu. Warehouse app also appears.
 
-Procurement-to-Pay process flow
-1. Create Purchase Request slip under HR/Purchase Requisition/Purchase Requisition. The draft is to be approved by Operations Manager.
-2. All submitted requests can be viewes under Purchase/Purchase/Calls for bids
+### Procurement-to-Pay process flow
+1. **Requestor** requests products to be purchased from purchasing department by creating an *Online Purchase Requisition Slip (PRS)* .
+2. Once the PRS is approved by the **Chief Operating Officer (COO) / Operations Manager (OM)**, a *Request for Quotation (RFQ)* which will be send via email to different suppliers.
+3. Upon receiving a confirmation from the suppliers regarding the RFQ, the details in the RFQ can be updated. A *Canvassing Form (CF)* will be made to show the prices of a product in different suppliers.
+4. The COO/OM will choose among the supplier based on the final bid.
+5. Then a *Purchase Order (PO)* draft is submitted to be approved by the Purchasing Manager (COO/OM)
 
 ### pre-installed modules upon creation of db
 base, base_import  
