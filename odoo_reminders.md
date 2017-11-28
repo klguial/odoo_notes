@@ -340,6 +340,8 @@ where table_name = 'product_template';
 ```xml
 <field name="status" widget="statusbar" statusbar_visible="draft,submitted,for_dr_conf_sending,for_dr_conf,confirmed_dr,for_delivery_conf,confirmed_del,enroute,received,done"/>
 ```
+if status bar not showing, check if the field `status` has also been used within the same form.
+
 
 ### edit tree view
 ```xml
