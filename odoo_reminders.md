@@ -205,6 +205,10 @@ Note: check whether it still works without the @api.model decorator
 class PurchaseForm(models.Model):
 	_name = 'purchase.form'
 	name = fields.Char('Form')
+	procurement_state = fields.Selection([
+    		('draft','New'),
+    		('ops_mgr','Operations Manager'),
+    		('purchase','Purchasing')], 'Procurement State')
 	product_line_ids = fields.One2many('product.line', 'purchase_id', 'Products', copy=True)
 
 class ProductLine(models.Model):
