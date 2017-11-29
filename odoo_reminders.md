@@ -241,6 +241,12 @@ self.env['another.model'].create({'key1':'val','key2':val})
 self.env['another.model'].write(x, {'key1':'val','key2':val})
 ```
 where `x` is an id
+**Using raw sql query**
+```python
+sql_record_cst = 'INSERT INTO modelB (curr_day, ord_proc) values(%s, 1)'
+self.env.cr.execute(sql_record_cst,[self.fieldinmodelA])
+self.env.cr.commit()
+```
 
 ## sql_codes
 ### Pentaho query sample
