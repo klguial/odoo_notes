@@ -36,6 +36,35 @@ telinit 6 #restart
 /opt/odoo9/server/openerp-server -c /etc/odoo9-server.conf --addons-path=/opt/odoo9/custom/addons,/opt/odoo9/custom/
 ```
 
+### DEL MONTE
+
+10.0 - https://purchase.delmontecsg.com
+	db dmpi_purchase_automation -u admin -p @DM!N123
+	(DMPI Distributors Ordering Module)
+
+8.0 - http://odoo1a.delmontecsg.com:8069/
+	db dmpi_clean -u admin -p odoomgr
+	(DMPI Distributors Sales, Purchasing, Warehouse)
+
+10.0 - http://odoo1a.delmontecsg.com:1069/
+	db dmpi_central_database -u admin -p admin123
+	(DMPI Central for managing Distributor Odoo Databases)
+
+Database Master Password -> P@SSW0RD
+
+### RESOURCES
+
+PO Allocation Upload File
+Dist Odoo User Manual
+PO Automation Encoder's Manual
+
+PO Automation
+	Purchase Automation Process
+Dist Odoo
+	Sales Process
+DMPI Central
+
+
 ### Pentaho Reports for OpenERP Installation
 1. add pentaho-reports folder in the same directory as the new module
 2. install manually
