@@ -43,11 +43,19 @@ telinit 6 #restart
 4. install at destination using `wget http://toolkt.com/files/pentaho-reports-for-openerp.war`
 
 ### Pentaho Reports Parameter Usage
-type | value
+key | value
 --- | ---
 name | ids
 label | ids
 value typye | object
+
+### Pentaho Reports System Parameters
+key | value
+--- | ---
+pentaho.postgres.host | localhost
+pentaho.postgres.port | 5432
+pentaho.postgres.login | odoomgr
+pentaho.postgres.password | odoomgr
 
 ### Navicat db connection config
 **odoo**  
