@@ -125,6 +125,11 @@ im_chat, im_odoo_support
 web_apps (kanban, graph, etc)  
 report, bus, auth_crypt  
 
+
+### get model_ids in db table ir_model_data
+
+
+
 ## python_codes
 ### Manifest file input
 ```python
