@@ -226,6 +226,22 @@ class Product(models.Model):
 	desctiption = fields.Text('Description')
 ```
 
+### ORM api
+**Get access to another model**
+```python
+self.env['model.name'] (in new api)
+self.pool.get('model.name') ('in old api)
+```
+**Create record in another model**
+```python
+self.env['another.model'].create({'key1':'val','key2':val})
+```
+**Update record in another model**
+```python
+self.env['another.model'].write(x, {'key1':'val','key2':val})
+```
+where `x` is an id
+
 ## sql_codes
 ### Pentaho query sample
 ```sql
