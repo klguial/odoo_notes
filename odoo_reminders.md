@@ -83,15 +83,28 @@ CRP - Continuous Replenishment Program
 DR - Delivery receipt
 
 ### PO Automation Notes
-- what are date_end and date_start of allocation?
 - Allocation -> allocated products to distributor on a monthly basis (date start, date end). details include product name, product source (plant), number of products allocated (allocation), cases
+
+- ODOO STATUS
+	- draft
+	- submitted
+	- for_dr_conf_sending
+	- for_dr_conf
+	- confirmed_dr
+	- for_delivery_conf
+	- confirmed_del
+	- enroute
+	- received
+	- done
+	- cancelled
+	
 - CRON functions
-	- cron_send_received
 	- cron_send_files
 	- cron_execute_queue
 	- cron_create_files
 	- cron_read_files
 	- cron_get_remote_files
+	- cron_send_received (removed)
 
 - **Draft** Status
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
@@ -114,14 +127,25 @@ DR - Delivery receipt
 		- Allocation is per integers of pallet. Each product has a given number of cases per pallet.
 		- `weight = 100 * product_weight * qty_ordered / max_truck_weight`
 		- `load = 100 * qty / allowed_cases`
-	- CRON function `submit_po`
+	- action `submit_po`, status to `submitted`
 - **Submitted** Status
-	- P000003515
+	- P000003515 (sample po)
+	- action `so_create`
 	- check purchase orders with `status = 'submitted'` and `sent_to_sap_so = False`
 	- ODOO will create SO (Sap Order?) for inbound to SAP.
 	- see function `so_create()` in `sap.py`
-	- ODOO cretes writes product line records into csv file with filename as shown below. Data includes PO No. etc.  `'so_create_%s_%s.csv' % (so.odoo_po_no,datetime.strptime(so.po_date,'%Y-%m-%d').strftime('%Y%m%d')).`	
+	- ODOO cretes writes product line records into csv file with filename as shown below. Data includes PO No. etc.  `so_create_P000002084_20171130.csv` (odoo PO no. and po date submtted)
 	- set `sent_to_sap_no = True`
+	- action `read_dr`
+	- Will read DR that SAP sent in file lcoation `/home/tk/ODOO_PROD/outbound`
+	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
+		- sap_so_no
+		- dr_no
+		- dr_date
+		- dr_lines (sap_line_no, odoo_line_no, product, dr_qty)
+	- status to `for_dr_conf_sending`
+- **For DR Sending** Status
+	
 
 ### TO-Do
 1. Check if server_date near ExpDD and status is still Cofirmed Delivery
