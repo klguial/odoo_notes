@@ -73,6 +73,24 @@ Dist Odoo
 	Sales Process  
 DMPI Central  
 
+### Del Monte SAP Config (disable SAP Middleware)
+Host 0.0.0.0 (202.129.238.22)
+Disable CRON scheduled actions from dmpi_po_central  
+
+### Del Monte Abbreviations
+CSR - Customer Service Representative  
+CRP - Continuous Replenishment Program  
+DR - Delivery receipt
+
+### PO Automation Notes
+- Allocation -> allocated products to distributor on a monthly basis (`date start`, `date end`). details include product name, product source (plant), number of products allocated (allocation), cases
+- Purchases
+
+
+- PO Date, System RDD, Proposed RDD, Expected DD
+- what are date_end and date_start of allocation?
+- CASE `inland`: `SysRDD = POD + 5`, 
+
 
 ### Pentaho Reports for OpenERP Installation
 1. add pentaho-reports folder in the same directory as the new module
