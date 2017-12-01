@@ -74,7 +74,7 @@ Dist Odoo
 DMPI Central  
 
 ### Del Monte SAP Config (disable SAP Middleware)
-Host 0.0.0.0 (202.129.238.22)
+Host 0.0.0.0 (202.129.238.22)  
 Disable CRON scheduled actions from dmpi_po_central  
 
 ### Del Monte Abbreviations
@@ -85,7 +85,15 @@ DR - Delivery receipt
 ### PO Automation Notes
 - what are date_end and date_start of allocation?
 - Allocation -> allocated products to distributor on a monthly basis (date start, date end). details include product name, product source (plant), number of products allocated (allocation), cases
-- **Draft** State
+- CRON functions
+	- cron_send_received
+	- cron_send_files
+	- cron_execute_queue
+	- cron_create_files
+	- cron_read_files
+	- cron_get_remote_files
+
+- **Draft** Status
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
 	- (for PO Drafts not submitted within RDD month, must not be proceeded)
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days)
@@ -106,8 +114,14 @@ DR - Delivery receipt
 		- Allocation is per integers of pallet. Each product has a given number of cases per pallet.
 		- `weight = 100 * product_weight * qty_ordered / max_truck_weight`
 		- `load = 100 * qty / allowed_cases`
-- **Submitted** State
+	- CRON function `submit_po`
+- **Submitted** Status
 	- P000003515
+	- check purchase orders with `status = 'submitted'` and `sent_to_sap_so = False`
+	- ODOO will create SO (Sap Order?) for inbound to SAP.
+	- see function `so_create()` in `sap.py`
+	- ODOO cretes writes product line records into csv file with filename as shown below. Data includes PO No. etc.  `'so_create_%s_%s.csv' % (so.odoo_po_no,datetime.strptime(so.po_date,'%Y-%m-%d').strftime('%Y%m%d')).`	
+	- set `sent_to_sap_no = True`
 
 ### TO-Do
 1. Check if server_date near ExpDD and status is still Cofirmed Delivery
