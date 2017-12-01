@@ -155,10 +155,38 @@ DR - Delivery receipt
 	- status to `for_dr_conf` 
 
 - **For DR Confirmation** Status
+	- P000003414 (sample PO)
 	- CSR has already determined that the PO is allocated and submitted for Distributor Approval
-	- The distributor must verify the summary tab if the PO qty vs DR qty is acceptable
-	- 
+	- The distributor must verify the summary tab if the PO qty vs DR qty is acceptable.
+	- status to `confirmed_dr` and `status_po_confirmed = True`
+	- ODOO will send notification to SAP.
+	- Create PO Conf `create_po_conf`
+	- `sent_to_sap_po: True` (PO to SAP) update `sent_to_sap_po_date`
+	- `status_po_confirmed` (PO Confirmed)
 	
+- **For Confirmed DR** Status
+	- CSR will trigger status to `for_delivery_conf`
+	- He can set RDD to be confirmed by distributor
+	- 'status': "for_delivery_conf"
+	- `send_to_dist_dr_conf: True` (DR Conf to Dist) update `send_to_dist_dr_conf`
+
+- **For Delivery Confirmation** Status
+	- Distributor must confirm the Exp RDD if acceptable
+	- action `confirm_del`
+	- status `confirmed_del`
+	- `send_to_sap_dr: True` (DR to SAP) update `send_to_sap_dr_date`
+
+- **Confirmed Delivery** Status
+	- (ODOO Automation)
+	- fill enroute
+	- fill invoice
+	- fill GR
+	- Invoice From SAP
+	- Invoice to Dist
+	- Enroute to Dist
+
+	
+- **
 ### TO-Do
 1. Check if server_date near ExpDD and status is still Cofirmed Delivery
 	- create CRON automated process
