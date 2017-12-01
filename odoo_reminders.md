@@ -95,7 +95,16 @@ DR - Delivery receipt
 		- CV for offshore
 		- 10Wheel for inland
 	- Cannot submit PO unless load requirements are met
-	- 
+	- Truck Load and Truck Load Weight
+		- `max_truck_load_wieght_kg = 15000`. set at `dmpi.po.config`
+		- `max_van_load_wieght_kg = 18000` (container van). set at `dmpi.po.config`
+		- `load_configuration`: either CV or 10W
+		- max and min `truck_load` (%) and max and min `truck_load_weight` are the constraints
+		- Truck Load (%) refers to the space occupied by the products (simply called load)
+		- Truck Load Weight (%) refers to the weight of the products (simply called weight)
+		- Allocation is per integers of pallet. Each product has a given number of cases per pallet.
+		- weight (%) = 100 * product_weight * qty_ordered (in cases) / max_truck_weight
+		- load (%) = 100 * qty (in cases) / allowed_cases (number of cases)
 
 ### TO-Do
 1. Check if server_date near ExpDD and status is still Cofirmed Delivery
