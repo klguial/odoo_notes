@@ -11,6 +11,16 @@ configure settings. comment out lines for postgresql installation
 run bash file `./odoo10.sh`  
 go to **192.168.10.100:1069** to open odoo  
 
+### Virtual Machine Settings
+Memory - 1GB  
+Processors - 1  
+Hard Disk - 100GB  
+CD/DVD - Using unknown backend  
+Network Adapter - NAT (share host's IP address)  
+Shared Folders - Add Folder path  
+** shared folder viewed at /mnt/hgfs/  
+
+
 ### Odoo service reminders
 ODOO DB PASS: `P@SSW0RD`  
 ```bash
