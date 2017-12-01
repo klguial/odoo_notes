@@ -85,12 +85,13 @@ DR - Delivery receipt
 ### PO Automation Notes
 - what are date_end and date_start of allocation?
 - Allocation -> allocated products to distributor on a monthly basis (date start, date end). details include product name, product source (plant), number of products allocated (allocation), cases
-- **DRAFT** State
+- **Draft** State
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
 	- (for PO Drafts not submitted within RDD month, must not be proceeded)
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days)
 		- POdate = date of submission
 		- SysRDD, PropRDD, ExpRDD = POdate + inland (offshore) days
+	- ODOOPO number created
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
 		- 10Wheel for inland
@@ -103,8 +104,10 @@ DR - Delivery receipt
 		- Truck Load (%) refers to the space occupied by the products (simply called load)
 		- Truck Load Weight (%) refers to the weight of the products (simply called weight)
 		- Allocation is per integers of pallet. Each product has a given number of cases per pallet.
-		- weight (%) = 100 * product_weight * qty_ordered (in cases) / max_truck_weight
-		- load (%) = 100 * qty (in cases) / allowed_cases (number of cases)
+		- `weight = 100 * product_weight * qty_ordered / max_truck_weight`
+		- `load = 100 * qty / allowed_cases`
+- **Submitted** State
+	- P000003515
 
 ### TO-Do
 1. Check if server_date near ExpDD and status is still Cofirmed Delivery
