@@ -83,18 +83,27 @@ CRP - Continuous Replenishment Program
 DR - Delivery receipt
 
 ### PO Automation Notes
-- Allocation -> allocated products to distributor on a monthly basis (`date start`, `date end`). details include product name, product source (plant), number of products allocated (allocation), cases
+- what are date_end and date_start of allocation?
+- Allocation -> allocated products to distributor on a monthly basis (date start, date end). details include product name, product source (plant), number of products allocated (allocation), cases
 - **DRAFT** State
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
 	- (for PO Drafts not submitted within RDD month, must not be proceeded)
-	- Upon submission of PO, PO Dates adjust based on Source type (inland or offshore)
-		- asd
+	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days)
+		- POdate = date of submission
+		- SysRDD, PropRDD, ExpRDD = POdate + inland (offshore) days
+	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
+		- CV for offshore
+		- 10Wheel for inland
+	- Cannot submit PO unless load requirements are met
+	- 
 
-
-- PO Date, System RDD, Proposed RDD, Expected DD
-- what are date_end and date_start of allocation?
-- CASE `inland`: `SysRDD = POD + 5`, 
-
+### TO-Do
+1. Check if server_date near ExpDD and status is still Cofirmed Delivery
+	- create CRON automated process
+	- query data given the conditions
+	- add mail message with POs having the same condition
+	- check if inland/offshore
+2. Check also for "For DRc conf" and "For Del conf" status
 
 ### Pentaho Reports for OpenERP Installation
 1. add pentaho-reports folder in the same directory as the new module
