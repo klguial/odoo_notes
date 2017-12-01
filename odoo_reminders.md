@@ -497,10 +497,19 @@ if status bar not showing, check if the field `status` has also been used within
 </page>
 ```
 
-
-
-
-
+### Automatically grouped tree view
+In your action, add context field
+```xml
+<field name="context">{'group_by': 'employee_id'}</field>
+```
+Or first create a filter in your search view
+```xml
+<filter name="group_employee_id" string="Category" icon="terp-partner" context="{'group_by':'employee_id'}"/>
+```
+And use it in the context field
+```xml
+<field name="context">{'search_default_group_employee_id': 1}</field>
+```
 
 
 
