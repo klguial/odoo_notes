@@ -128,25 +128,37 @@ DR - Delivery receipt
 		- `weight = 100 * product_weight * qty_ordered / max_truck_weight`
 		- `load = 100 * qty / allowed_cases`
 	- action `submit_po`, status to `submitted`
+	
 - **Submitted** Status
+	-  Po is submitted to SAP
 	- P000003515 (sample po)
 	- action `so_create`
 	- check purchase orders with `status = 'submitted'` and `sent_to_sap_so = False`
 	- ODOO will create SO (Sap Order?) for inbound to SAP.
 	- see function `so_create()` in `sap.py`
 	- ODOO cretes writes product line records into csv file with filename as shown below. Data includes PO No. etc.  `so_create_P000002084_20171130.csv` (odoo PO no. and po date submtted)
-	- set `sent_to_sap_no = True`
+	- set `sent_to_sap_no = True` and record `sent_to_sap_so_date`
 	- action `read_dr`
-	- Will read DR that SAP sent in file lcoation `/home/tk/ODOO_PROD/outbound`
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
 		- dr_date
 		- dr_lines (sap_line_no, odoo_line_no, product, dr_qty)
+	- Will read DR that SAP sent in file lcoation `/home/tk/ODOO_PROD/outbound`
 	- status to `for_dr_conf_sending`
-- **For DR Sending** Status
 	
+- **For DR Sending** Status
+	- CSR has already issued DR and waiting for full allocation
+	- action `send_dr_conf`
+	- ODOO will automatically create a purchase order of object `purchase.order` with the products of object `product.product` already included in the order lines
+	- `sent_to_dist_po_conf: True` (PO Conf to Dist), and date record date `sent_to_dist_po_conf_date`
+	- status to `for_dr_conf` 
 
+- **For DR Confirmation** Status
+	- CSR has already determined that the PO is allocated and submitted for Distributor Approval
+	- The distributor must verify the summary tab if the PO qty vs DR qty is acceptable
+	- 
+	
 ### TO-Do
 1. Check if server_date near ExpDD and status is still Cofirmed Delivery
 	- create CRON automated process
