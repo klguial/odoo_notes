@@ -86,7 +86,9 @@ DR - Delivery receipt
 - Allocation -> allocated products to distributor on a monthly basis (`date start`, `date end`). details include product name, product source (plant), number of products allocated (allocation), cases
 - **DRAFT** State
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
-	- 
+	- (for PO Drafts not submitted within RDD month, must not be proceeded)
+	- Upon submission of PO, PO Dates adjust based on Source type (inland or offshore)
+		- asd
 
 
 - PO Date, System RDD, Proposed RDD, Expected DD
