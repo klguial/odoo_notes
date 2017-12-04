@@ -74,24 +74,22 @@ DR - Delivery receipt
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). 
 		- **Check function `submit_po()`**
 		- **Status to `submitted`**
-	
+
 - **Submitted** Status
 	-  Po is submitted to SAP
-	- P000003515 (sample po)
-	- action `so_create`
-	- check purchase orders with `status = 'submitted'` and `sent_to_sap_so = False`
-	- ODOO will create SO (Sap Order?) for inbound to SAP.
-	- see function `so_create()` in `sap.py`
-	- ODOO cretes writes product line records into csv file with filename as shown below. Data includes PO No. etc.  `so_create_P000002084_20171130.csv` (odoo PO no. and po date submtted)
-	- set `sent_to_sap_no = True`{:.language-python} and record `sent_to_sap_so_date`
- 	- action `read_dr`
+	- An SO (sales order) is created for PO's with submitted status. 
+	- Relevant information from the PO is prepared to a csv file with sampel name **`so_create_P000002084_20171130.csv`**.
+	- CSV file is transferred to remote server
+	- **Check function `so_create()`. **SO to SAP (`sent_to_sap_so: True`)**
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
 		- dr_date
 		- dr_lines (sap_line_no, odoo_line_no, product, dr_qty)
-	- Will read DR that SAP sent in file lcoation `/home/tk/ODOO_PROD/outbound`
-	- status to `for_dr_conf_sending`
+	- A cron task that read files is automatically. ODOO will read the outbound files from SAP. **Check CRON function `_cron_read_files()`**
+	- Under the cron task is function for reading the DR. **Check function `read_dr()`.
+		- the DR details will be read and necessary changes in the PO will be made such as the summary and DR details
+		- **Status to `for_dr_conf_sending`**
 	
 - **For DR Sending** Status
 	- CSR has already issued DR and waiting for full allocation
