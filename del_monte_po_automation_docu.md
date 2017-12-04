@@ -93,10 +93,15 @@ DR - Delivery receipt
 	
 - **For DR Sending** Status
 	- CSR has already issued DR and waiting for full allocation
-	- action `send_dr_conf`
-	- ODOO will automatically create a purchase order of object `purchase.order` with the products of object `product.product` already included in the order lines
-	- `sent_to_dist_po_conf: True` (PO Conf to Dist), and date record date `sent_to_dist_po_conf_date`
-	- status to `for_dr_conf` 
+	- CSR has already issued DR for full allocation
+	- If everything is OK, CSR will send the PO to distributor using the action **`send_dr_conf()`**
+		- if user has id=47
+			- ODOO will create a purchase oreder of object `purchase.order`
+			- ODDOO will also create the products ofobject `product.product`
+			- **Status to `for_dr_conf_sending`**
+		- else
+			- just change the **Status to `for_dr_conf_sending`**
+		- **SO to SAP (`sent_to_dist_po_conf: True`)**
 
 - **For DR Confirmation** Status
 	- P000003414 (sample PO)
