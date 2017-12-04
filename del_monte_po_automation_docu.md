@@ -55,7 +55,7 @@ DR - Delivery receipt
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
 		- 10Wheel for inland
-		- **Check function `on_change_deliver_source()`**
+		- Check function <span style="color:red">`on_change_deliver_source()`</span> 
 	- Cannot submit PO unless load requirements are met
 	- Truck Load and Truck Load Weight
 		- `max_truck_load_wieght_kg = 15000`. set at `dmpi.po.config`
