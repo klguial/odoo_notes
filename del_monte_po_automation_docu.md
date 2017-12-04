@@ -78,8 +78,8 @@ DR - Delivery receipt
 	- ODOO will create SO (Sap Order?) for inbound to SAP.
 	- see function `so_create()` in `sap.py`
 	- ODOO cretes writes product line records into csv file with filename as shown below. Data includes PO No. etc.  `so_create_P000002084_20171130.csv` (odoo PO no. and po date submtted)
-	- set `sent_to_sap_no = True` and record `sent_to_sap_so_date`
-	- action `read_dr`
+	- set `sent_to_sap_no = True`{:.language-python} and record `sent_to_sap_so_date`
+ 	- action `read_dr`
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
