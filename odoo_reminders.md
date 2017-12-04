@@ -298,6 +298,33 @@ self.env['another.model'].create({'key1':'val','key2':val})
 ```python
 self.env['another.model'].write(x, {'key1':'val','key2':val})
 ```
+**Create new record with one2many values**
+```python
+invoice_line_1 = {
+   'name': 'line description 1',
+   'price_unit': 100,
+   'quantity': 1,
+}
+
+invoice_line_2 = {
+   'name': 'line description 2',
+   'price_unit': 200,
+   'quantity': 1,
+}
+
+invoice = {
+   'type': 'out_invoice',
+   'comment': 'Invoice for example',
+   'state': 'draft',
+   'partner_id': 1,
+   'account_id': 19,
+   'invoice_line': [
+       (0, 0, invoice_line_1),
+       (0, 0, invoice_line_2)
+   ]
+}
+```
+
 where `x` is an id
 **Using raw sql query**
 ```python
