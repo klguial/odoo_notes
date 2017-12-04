@@ -49,7 +49,7 @@ DR - Delivery receipt
 
 - **Draft** Status
 	- (NOTHING: for PO Drafts not submitted within RDD month, must not be proceeded)
-	- PO object is `dmpi.po.sale` with inherited properties from `mail.thread` and 'ir.needaction_mixin'
+	- PO object is `dmpi.po.sale` with inherited properties from `mail.thread` and `ir.needaction_mixin`
 	- Upon creation, ODOO PO number is created.
 		- Check function `create()` under `dmpi.po.sale` model
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
@@ -58,7 +58,7 @@ DR - Delivery receipt
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
 		- 10Wheel for inland
-		- Check function `on_change_deliver_source()`
+		- **Check function `on_change_deliver_source()`**
 	- Cannot submit PO unless load requirements are met
 	- Truck Load and Truck Load Weight
 		- `max_truck_load_wieght_kg = 15000`. set at `dmpi.po.config`
