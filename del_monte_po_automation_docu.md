@@ -48,11 +48,46 @@ DR - Delivery receipt
 	- cron_send_received (removed)
 
 - **Draft** Status
+	- (NOTHING: for PO Drafts not submitted within RDD month, must not be proceeded)
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
-	- (for PO Drafts not submitted within RDD month, must not be proceeded)
-	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days)
-		- POdate = date of submission
-		- SysRDD, PropRDD, ExpRDD = POdate + inland (offshore) days
+		- Required Fields: Dsitributor, Ship To, Plant, Source, Distributor Channel, Reference No
+		- `line_ids`: related to `dmpi.po.sale.line` object. Has the specifications on product qty, allocation price etc. 
+	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). Check function
+		- ```python
+		    @api.multi
+		    def submit_po(self):
+			for rec in self:
+			    rec.status = 'submitted'
+			    rec.truck_load = rec.computed_truck_load
+			    rec.truck_load_weight = rec.computed_truck_load_weight
+			    rec.plant = rec.plant_id.name
+
+			    submitted_date = fields.Date.context_today(self)
+			    rec.po_date = submitted_date
+
+			    d = 0
+			    if rec.deliver_source == 'inland':
+				d = rec.distributor_id.inland_sdd
+
+			    if rec.deliver_source == 'off_shore':
+				d = rec.distributor_id.offshore_sdd
+
+			    date = datetime.strptime(submitted_date, '%Y-%m-%d') + timedelta(days=d)
+			    rec.system_rdd = date
+			    rec.proposed_rdd = date
+			    rec.rdd = date
+
+			    line_no = 0
+			    for line in rec.line_ids:
+				line_no += 10
+				line.odoo_line_no = line_no
+
+				if not line.product_id:
+				    line.unlink()
+		```
+	
+	
+	
 	- ODOOPO number created
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
