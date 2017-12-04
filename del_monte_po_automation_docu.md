@@ -52,36 +52,10 @@ DR - Delivery receipt
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
 		- Required Fields: Dsitributor, Ship To, Plant, Source, Distributor Channel, Reference No
 		- `line_ids`: related to `dmpi.po.sale.line` object. Has the specifications on product qty, allocation price etc. 
-	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). Check function
-		- ```python
-		    @api.multi
-		    def submit_po(self):
-			for rec in self:
-			    rec.status = 'submitted'
-			    submitted_date = fields.Date.context_today(self)
-			    rec.po_date = submitted_date
-			    d = 0
-			    if rec.deliver_source == 'inland':
-				d = rec.distributor_id.inland_sdd
-			    if rec.deliver_source == 'off_shore':
-				d = rec.distributor_id.offshore_sdd
-			    date = datetime.strptime(submitted_date, '%Y-%m-%d') + timedelta(days=d)
-			    rec.system_rdd = date
-			    rec.proposed_rdd = date
-			    rec.rdd = date
-
-			    line_no = 0
-			    for line in rec.line_ids:
-				line_no += 10
-				line.odoo_line_no = line_no
-
-				if not line.product_id:
-				    line.unlink()
-		```
-	- ODOOPO number created
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
 		- 10Wheel for inland
+		- **Check function `on_change_deliver_source()`**
 	- Cannot submit PO unless load requirements are met
 	- Truck Load and Truck Load Weight
 		- `max_truck_load_wieght_kg = 15000`. set at `dmpi.po.config`
@@ -93,6 +67,13 @@ DR - Delivery receipt
 		- Allocation is per integers of pallet. Each product has a given number of cases per pallet.
 		- `weight = 100 * product_weight * qty_ordered / max_truck_weight`
 		- `load = 100 * qty / allowed_cases`
+		- **Check function `_get_truck_load()`**
+	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). 
+		- **Check function `submit_po()`**
+	- ODOOPO number created
+	
+	
+
 	- action `submit_po`, status to `submitted`
 	
 - **Submitted** Status
