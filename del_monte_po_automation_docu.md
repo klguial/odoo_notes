@@ -156,6 +156,17 @@ DR - Delivery receipt
 		- details such as forwarder, container, plate no., GI Date, and DR lines are generated
 		- **Status to `enroute`**
 		- **Enroute to Dist `True`** (but not coded in my version)
-	- At the GR page
-		- Get GR lines
+	- CSR will now send PO to distributor
+		- **Check function `send_po_to_dist()`**
+		- **Status to `enroute`**
+		- Will popoulate 
+
+- **Enroute** Status
+	- At the GR page. Get GR lines.
+		- **Check function `get_gr_lines()`**
+		- To populate GR lines
+	- ODOO will automatically create GR to send to SAP
+		- **Check function `create_gr_conf()`**
+		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a PO to SAP
+		
 - **
