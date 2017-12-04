@@ -1,5 +1,5 @@
 This is a documentation of the workflow of the pruchase automation of Del Monte.  
-The file structure is shown below.
+The file structure is shown below.  
 .
 +-- _config.yml
 +-- _drafts
