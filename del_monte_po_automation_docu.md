@@ -1,23 +1,14 @@
 This is a documentation of the workflow of the pruchase automation of Del Monte.  
 The file structure is shown below.  
-.
-+-- _config.yml
-+-- _drafts
-|   +-- begin-with-the-crazy-ideas.textile
-|   +-- on-simplicity-in-technology.markdown
-+-- _includes
-|   +-- footer.html
-|   +-- header.html
-+-- _layouts
-|   +-- default.html
-|   +-- post.html
-+-- _posts
-|   +-- 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   +-- 2009-04-26-barcamp-boston-4-roundup.textile
-+-- _data
-|   +-- members.yml
-+-- _site
-+-- index.html
+```
+dmpi-po-automation-master
+│   .gitignore
+│   README.md
+│   .DS_Store
+│
+└───backend_theme_v10  
+└───dmpi_po_central
+```
 
 ### Del Monte SAP Config (disable SAP Middleware)
 Host 0.0.0.0 (202.129.238.22)  
