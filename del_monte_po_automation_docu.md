@@ -80,14 +80,16 @@ DR - Delivery receipt
 	- An SO (sales order) is created for PO's with submitted status. 
 	- Relevant information from the PO is prepared to a csv file with sampel name **`so_create_P000002084_20171130.csv`**.
 	- CSV file is transferred to remote server
-	- **Check function `so_create()`. **SO to SAP (`sent_to_sap_so: True`)**. Automatically done by CRON. Check **`_cron_create_files()`**
+		- **Check function `so_create()`. 
+		- Automatically done by CRON. Check **`_cron_create_files()`**
+		- **SO to SAP (`sent_to_sap_so: True`)**. 
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
 		- dr_date
 		- dr_lines (sap_line_no, odoo_line_no, product, dr_qty)
 	- A cron task that read files is automatically. ODOO will read the outbound files from SAP. **Check CRON function `_cron_read_files()`**
-	- Under the cron task is function for reading the DR. **Check function `read_dr()`.
+		- Under the cron task is function for reading the DR. **Check function `read_dr()`.
 		- the DR details will be read and necessary changes in the PO will be made such as the summary and DR details
 		- **Status to `for_dr_conf_sending`**
 
@@ -127,19 +129,33 @@ DR - Delivery receipt
 		- **Status to `for_delivery_conf`**
 
 - **For Delivery Confirmation** Status
-	- Distributor must confirm the Exp RDD if acceptable
-	- action `confirm_del`
-	- status `confirmed_del`
-	- `send_to_sap_dr: True` (DR to SAP) update `send_to_sap_dr_date`
+	- Distributor must confirm the Exp RDD if acceptable.
+		- **Check function `confirm_del()`**
+		- **Status to `confirmed_del`**
+		- **DR Confirmed `True`**
 
 - **Confirmed Delivery** Status
-	- (ODOO Automation)
-	- fill enroute
-	- fill invoice
-	- fill GR
-	- Invoice From SAP
-	- Invoice to Dist
-	- Enroute to Dist
-
-	
+	- ODOO automatically read invoice and enroute from SAP. **Check CRON function `_cron_read_files`**
+	- For the read INVOICE
+		- gets invoice details from SAP such as invoice qty, line_net, invoice_no etc
+		- **Invoice from SAP `True`**
+	- For the read ENROUTE
+		- gets invoice details from SAP such as shipment, forwarder, container etc
+		- **Enroute from SAP `True`**	
+	- ODOO automatically sends invoice and enroute to distributor. **Check CRON function `_cron_send_files`**
+	- For the send INVOICE
+		- - **Check function `send_invoice()`** at sap.py and sale.py  (they are connected)
+		- CRON checks PO's where invoices were not yet sent to dist
+		- updates purchase order
+		- details such as invoice date, invoice no., net value are generated
+		- **Invoice to Dist `True`**
+	- For the send ENROUTE
+		- **Check function `send_enroute()`** at sap.py and sale.py  (they are connected)
+		- CRON checks PO's where enroutes were not yet sent to dist
+		- Updates purchase order
+		- details such as forwarder, container, plate no., GI Date, and DR lines are generated
+		- **Status to `enroute`**
+		- **Enroute to Dist `True`** (but not coded in my version)
+	- At the GR page
+		- Get GR lines
 - **
