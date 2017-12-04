@@ -55,7 +55,7 @@ DR - Delivery receipt
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
 		- 10Wheel for inland
-		- Check function <span style="color:red">some **This is Red Bold.** text</span>
+		- Check function `on_change_deliver_source()`
 	- Cannot submit PO unless load requirements are met
 	- Truck Load and Truck Load Weight
 		- `max_truck_load_wieght_kg = 15000`. set at `dmpi.po.config`
@@ -71,6 +71,10 @@ DR - Delivery receipt
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). 
 		- **Check function `submit_po()`**
 	- ODOOPO number created
+	```diff
+	+ this text is highlighted in green
+	- this text is highlighted in red
+	```
 	
 	
 
