@@ -80,7 +80,7 @@ DR - Delivery receipt
 	- An SO (sales order) is created for PO's with submitted status. 
 	- Relevant information from the PO is prepared to a csv file with sampel name **`so_create_P000002084_20171130.csv`**.
 	- CSV file is transferred to remote server
-	- **Check function `so_create()`. **SO to SAP (`sent_to_sap_so: True`)**
+	- **Check function `so_create()`. **SO to SAP (`sent_to_sap_so: True`)**. Automatically done by CRON. Check **`_cron_create_files()`**
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
@@ -90,7 +90,7 @@ DR - Delivery receipt
 	- Under the cron task is function for reading the DR. **Check function `read_dr()`.
 		- the DR details will be read and necessary changes in the PO will be made such as the summary and DR details
 		- **Status to `for_dr_conf_sending`**
-	
+
 - **For DR Sending** Status
 	- CSR has already issued DR and waiting for full allocation
 	- CSR has already issued DR for full allocation
@@ -101,23 +101,30 @@ DR - Delivery receipt
 			- **Status to `for_dr_conf_sending`**
 		- else
 			- just change the **Status to `for_dr_conf_sending`**
-		- **SO to SAP (`sent_to_dist_po_conf: True`)**
+		- **PO Conf to Dist (`sent_to_dist_po_conf: True`)**
 
 - **For DR Confirmation** Status
-	- P000003414 (sample PO)
-	- CSR has already determined that the PO is allocated and submitted for Distributor Approval
 	- The distributor must verify the summary tab if the PO qty vs DR qty is acceptable.
-	- status to `confirmed_dr` and `status_po_confirmed = True`
-	- ODOO will send notification to SAP.
-	- Create PO Conf `create_po_conf`
-	- `sent_to_sap_po: True` (PO to SAP) update `sent_to_sap_po_date`
-	- `status_po_confirmed` (PO Confirmed)
+	- If ok, use action **`confirm_dr()`**
+		- **Status to `confirmed_dr`**
+		- **PO Confirmed `True`**
 	
 - **For Confirmed DR** Status
-	- CSR will trigger status to `for_delivery_conf`
-	- He can set RDD to be confirmed by distributor
-	- 'status': "for_delivery_conf"
-	- `send_to_dist_dr_conf: True` (DR Conf to Dist) update `send_to_dist_dr_conf`
+	- ODOO will send notification to SAP automatically check **`_cron_create_files()`**. First it creates PO and DR files to be sent. 
+		- **Check function `create_po_conf()`**
+		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a PO to SAP
+		- creates a file `po_conf_odoopono_date.csv` to be sent to SAP giving approval status
+		- **PO to SAP `True`**
+	- Then ODOO will create a DR to be sent to SAP
+		- **Check function `create_dr_conf()`**
+		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a DR to SAP
+		- creates a file `dr_conf_odoopono_date.csv` to be sent to SAP giving approval status
+		- **DR to SAP `True`**
+	- CSR will now send the the PO to Dist for delviery confirmation
+		- **Check function `send_for_delivery_conf()`**
+		- ODOO will automatically update the RDD and PropRDD
+		- **DR Conf to Dist `True`**
+		- **Status to `for_delivery_conf`**
 
 - **For Delivery Confirmation** Status
 	- Distributor must confirm the Exp RDD if acceptable
