@@ -9,7 +9,7 @@ dmpi-po-automation-master
 └───backend_theme_v10  
 └───dmpi_po_central
 ```
-
+Before anythin else, do this to disable communication with SAP db
 ### Del Monte SAP Config (disable SAP Middleware)
 Host 0.0.0.0 (202.129.238.22)  
 Disable CRON scheduled actions from dmpi_po_central  
@@ -18,6 +18,10 @@ Disable CRON scheduled actions from dmpi_po_central
 CSR - Customer Service Representative  
 CRP - Continuous Replenishment Program  
 DR - Delivery receipt
+
+
+### Main views
+`sale_dist_view.xml` (For distributor PO to-do's), `sale_view.xml` (For CSR PO to-do's) and `central_view.xml` for configurations such as allocation, products, plants etc.  
 
 ### PO Automation Notes
 - Allocation -> allocated products to distributor on a monthly basis (date start, date end). details include product name, product source (plant), number of products allocated (allocation), cases
