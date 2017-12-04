@@ -49,6 +49,9 @@ DR - Delivery receipt
 
 - **Draft** Status
 	- (NOTHING: for PO Drafts not submitted within RDD month, must not be proceeded)
+	- PO object is `dmpi.po.sale` with inherited properties from `mail.thread` and 'ir.needaction_mixin'
+	- Upon creation, ODOO PO number is created.
+		- Check function `create()` under `dmpi.po.sale` model
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
 		- Required Fields: Dsitributor, Ship To, Plant, Source, Distributor Channel, Reference No
 		- `line_ids`: related to `dmpi.po.sale.line` object. Has the specifications on product qty, allocation price etc. 
@@ -70,15 +73,7 @@ DR - Delivery receipt
 		- **Check function `_get_truck_load()`**
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). 
 		- **Check function `submit_po()`**
-	- ODOOPO number created
-	```diff
-	+ this text is highlighted in green
-	- this text is highlighted in red
-	```
-	
-	
-
-	- action `submit_po`, status to `submitted`
+		- **Status to `submitted`**
 	
 - **Submitted** Status
 	-  Po is submitted to SAP
