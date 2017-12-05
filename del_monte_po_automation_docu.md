@@ -73,7 +73,7 @@ DR - Delivery receipt
 		- Check function *_get_truck_load()*
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). 
 		- Check function *submit_po()*
-		- Status &rightarrow; **`submitted`**
+		- Status &rightarrow; **submitted**
 
 - **Submitted** Status
 	- Po is submitted to SAP
@@ -82,16 +82,16 @@ DR - Delivery receipt
 	- CSV file is transferred to remote server
 		- Check function *so_create()*
 		- Automatically done by CRON. Check *_cron_create_files()*
-		- [x] **SO to SAP (`sent_to_sap_so`)**
+		- [x] **SO to SAP**
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
 		- dr_date
 		- dr_lines (sap_line_no, odoo_line_no, product, dr_qty)
 	- A cron task that read files is automatically. ODOO will read the outbound files from SAP. Check CRON function *_cron_read_files()*
-		- Under the cron task is function for reading the DR. **Check function `read_dr()`.
+		- Under the cron task is function for reading the DR. Check function *read_dr()*.
 		- the DR details will be read and necessary changes in the PO will be made such as the summary and DR details
-		- Status &rightarrow; **`for_dr_conf_sending`**
+		- Status &rightarrow; **for_dr_conf_sending**
 
 - **For DR Sending** Status
 	- CSR has already issued DR and waiting for full allocation
@@ -100,19 +100,19 @@ DR - Delivery receipt
 		- if user has id=47
 			- ODOO will create a purchase oreder of object `purchase.order`
 			- ODDOO will also create the products ofobject `product.product`
-		- Status &rightarrow; `for_dr_sending`**
-		- [x] **PO Conf to Dist (`sent_to_dist_po_conf`)**
+		- Status &rightarrow; **for_dr_sending**
+		- [x] **PO Conf to Dist**
 
 - **For DR Confirmation** Status
 	- The distributor must verify the summary tab if the PO qty vs DR qty is acceptable.
 	- If ok, use action *confirm_dr()*
-		- Status &rightarrow; **`confirmed_dr`**
+		- Status &rightarrow; **confirmed_dr**
 		- [x] **PO Confirmed**
 	
 - **For Confirmed DR** Status
 	- ODOO will send notification to SAP automatically check *_cron_create_files()*. First it creates PO and DR files to be sent. 
 		- Check function *create_po_conf()*
-		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a PO to SAP
+		- ODOO gets the id of PO's with a confirmed_dr status and has not yet sent a PO to SAP
 		- creates a file `po_conf_odoopono_date.csv` to be sent to SAP giving approval status
 		- [x] **PO to SAP**
 	- Then ODOO will create a DR to be sent to SAP
@@ -124,12 +124,12 @@ DR - Delivery receipt
 		- Check function *send_for_delivery_conf()*
 		- ODOO will automatically update the RDD and PropRDD
 		- [x] **DR Conf to Dist**
-		- Status &rightarrow; **`for_delivery_conf`**
+		- Status &rightarrow; **for_delivery_conf**
 
 - **For Delivery Confirmation** Status
 	- Distributor must confirm the Exp RDD if acceptable.
 		- Check function *confirm_del()*
-		- Status &rightarrow; **`confirmed_del`**
+		- Status &rightarrow; **confirmed_del**
 		- [x] **DR Confirmed**
 
 - **Confirmed Delivery** Status
@@ -142,29 +142,28 @@ DR - Delivery receipt
 		- [x] **Enroute from SAP**	
 	- ODOO automatically sends invoice and enroute to distributor. **Check CRON function `_cron_send_files`**
 	- For the send INVOICE
-		- - **Check function `send_invoice()`** at sap.py and sale.py  (they are connected)
+		- - Check function *send_invoice()* at sap.py and sale.py  (they are connected)
 		- CRON checks PO's where invoices were not yet sent to dist
 		- updates purchase order
 		- details such as invoice date, invoice no., net value are generated
 		- [x] **Invoice to Dist**
 	- For the send ENROUTE
-		- **Check function `send_enroute()`** at sap.py and sale.py  (they are connected)
+		- Check function *send_enroute()* at sap.py and sale.py  (they are connected)
 		- CRON checks PO's where enroutes were not yet sent to dist
 		- Updates purchase order
 		- details such as forwarder, container, plate no., GI Date, and DR lines are generated
-		- **Status to `enroute`**
+		- Status &rightarrow; **enroute**
 		- [x] **Enroute to Dist** (but not coded in my version)
 	- CSR will now send PO to distributor
-		- **Check function `send_po_to_dist()`**
-		- **Status to `enroute`**
+		- Check function *send_po_to_dist()*
 		- Will popoulate 
 
 - **Enroute** Status
 	- At the GR page. Get GR lines.
-		- **Check function `get_gr_lines()`**
+		- Check function *get_gr_lines()*
 		- To populate GR lines
 	- ODOO will automatically create GR to send to SAP
-		- **Check function `create_gr_conf()`**
-		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a PO to SAP
+		- Check function *create_gr_conf()*
+		- ODOO gets the id of PO's with a confirmed_dr status and has not yet sent a PO to SAP
 		
 - **
