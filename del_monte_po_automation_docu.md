@@ -82,7 +82,7 @@ DR - Delivery receipt
 	- CSV file is transferred to remote server
 		- **Check function `so_create()`. 
 		- Automatically done by CRON. Check **`_cron_create_files()`**
-		- **SO to SAP (`sent_to_sap_so: True`)**. 
+		- [x] **SO to SAP (`sent_to_sap_so`)**
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
