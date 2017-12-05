@@ -51,47 +51,47 @@ DR - Delivery receipt
 	- (NOTHING: for PO Drafts not submitted within RDD month, must not be proceeded)
 	- PO object is `dmpi.po.sale` with inherited properties from `mail.thread` and `ir.needaction_mixin`
 	- Upon creation, ODOO PO number is created.
-		- Check function `create()` under `dmpi.po.sale` model
+		- Check function *create()* under dmpi.po.sale model
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
 		- Required Fields: Dsitributor, Ship To, Plant, Source, Distributor Channel, Reference No
-		- `line_ids`: related to `dmpi.po.sale.line` object. Has the specifications on product qty, allocation price etc. 
+		- line_ids: related to dmpi.po.sale.line object. Has the specifications on product qty, allocation price etc. 
 	- Load configuration: CV (container van) or 10 Wheeler. Also depends on source location. 
 		- CV for offshore
 		- 10Wheel for inland
-		- **Check function `on_change_deliver_source()`**
+		- Check function *on_change_deliver_source()*
 	- Cannot submit PO unless load requirements are met
 	- Truck Load and Truck Load Weight
-		- `max_truck_load_wieght_kg = 15000`. set at `dmpi.po.config`
-		- `max_van_load_wieght_kg = 18000` (container van). set at `dmpi.po.config`
-		- `load_configuration`: either CV or 10W
-		- max and min `truck_load` (%) and max and min `truck_load_weight` are the constraints
+		- max_truck_load_wieght_kg = 15000. set at dmpi.po.config
+		- max_van_load_wieght_kg = 18000 (container van). set at dmpi.po.config
+		- load_configuration: either CV or 10W
+		- max and min truck_load (%) and max and min truck_load_weight are the constraints
 		- Truck Load (%) refers to the space occupied by the products (simply called load)
 		- Truck Load Weight (%) refers to the weight of the products (simply called weight)
 		- Allocation is per integers of pallet. Each product has a given number of cases per pallet.
-		- `weight = 100 * product_weight * qty_ordered / max_truck_weight`
-		- `load = 100 * qty / allowed_cases`
-		- **Check function `_get_truck_load()`**
+		- weight = 100 * product_weight * qty_ordered / max_truck_weight
+		- load = 100 * qty / allowed_cases
+		- Check function *_get_truck_load()*
 	- Upon submission of PO, PO Dates adjust based on Source type (inland = 5 days or offshore = 15 days). 
-		- **Check function `submit_po()`**
-		- **&rightarrow; `submitted`**
+		- Check function *submit_po()*
+		- Status &rightarrow; **`submitted`**
 
 - **Submitted** Status
-	-  Po is submitted to SAP
+	- Po is submitted to SAP
 	- An SO (sales order) is created for PO's with submitted status. 
-	- Relevant information from the PO is prepared to a csv file with sampel name **`so_create_P000002084_20171130.csv`**.
+	- Relevant information from the PO is prepared to a csv file with sampel name *so_create_P000002084_20171130.csv*.
 	- CSV file is transferred to remote server
-		- **Check function `so_create()`. 
-		- Automatically done by CRON. Check **`_cron_create_files()`**
+		- Check function *so_create()*
+		- Automatically done by CRON. Check *_cron_create_files()*
 		- [x] **SO to SAP (`sent_to_sap_so`)**
 	- SAP will then read the file in return would send back a DR (delivery receipt) together with its details such as:
 		- sap_so_no
 		- dr_no
 		- dr_date
 		- dr_lines (sap_line_no, odoo_line_no, product, dr_qty)
-	- A cron task that read files is automatically. ODOO will read the outbound files from SAP. **Check CRON function `_cron_read_files()`**
+	- A cron task that read files is automatically. ODOO will read the outbound files from SAP. Check CRON function *_cron_read_files()*
 		- Under the cron task is function for reading the DR. **Check function `read_dr()`.
 		- the DR details will be read and necessary changes in the PO will be made such as the summary and DR details
-		- **Status to `for_dr_conf_sending`**
+		- Status &rightarrow; **`for_dr_conf_sending`**
 
 - **For DR Sending** Status
 	- CSR has already issued DR and waiting for full allocation
@@ -100,38 +100,36 @@ DR - Delivery receipt
 		- if user has id=47
 			- ODOO will create a purchase oreder of object `purchase.order`
 			- ODDOO will also create the products ofobject `product.product`
-			- **Status to `for_dr_conf_sending`**
-		- else
-			- just change the **Status to `for_dr_conf_sending`**
+		- Status &rightarrow; `for_dr_sending`**
 		- [x] **PO Conf to Dist (`sent_to_dist_po_conf`)**
 
 - **For DR Confirmation** Status
 	- The distributor must verify the summary tab if the PO qty vs DR qty is acceptable.
-	- If ok, use action **`confirm_dr()`**
-		- **Status to `confirmed_dr`**
+	- If ok, use action *confirm_dr()*
+		- Status &rightarrow; **`confirmed_dr`**
 		- [x] **PO Confirmed**
 	
 - **For Confirmed DR** Status
-	- ODOO will send notification to SAP automatically check **`_cron_create_files()`**. First it creates PO and DR files to be sent. 
-		- **Check function `create_po_conf()`**
+	- ODOO will send notification to SAP automatically check *_cron_create_files()*. First it creates PO and DR files to be sent. 
+		- Check function *create_po_conf()*
 		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a PO to SAP
 		- creates a file `po_conf_odoopono_date.csv` to be sent to SAP giving approval status
 		- [x] **PO to SAP**
 	- Then ODOO will create a DR to be sent to SAP
-		- **Check function `create_dr_conf()`**
+		- Check function *create_dr_conf()*
 		- ODOO gets the id of PO's with a `confirmed_dr` status and has not yet sent a DR to SAP
 		- creates a file `dr_conf_odoopono_date.csv` to be sent to SAP giving approval status
 		- [x] **DR to SAP**
 	- CSR will now send the the PO to Dist for delviery confirmation
-		- **Check function `send_for_delivery_conf()`**
+		- Check function *send_for_delivery_conf()*
 		- ODOO will automatically update the RDD and PropRDD
 		- [x] **DR Conf to Dist**
-		- **Status to `for_delivery_conf`**
+		- Status &rightarrow; **`for_delivery_conf`**
 
 - **For Delivery Confirmation** Status
 	- Distributor must confirm the Exp RDD if acceptable.
-		- **Check function `confirm_del()`**
-		- **Status to `confirmed_del`**
+		- Check function *confirm_del()*
+		- Status &rightarrow; **`confirmed_del`**
 		- [x] **DR Confirmed**
 
 - **Confirmed Delivery** Status
