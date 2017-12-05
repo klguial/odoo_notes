@@ -96,7 +96,7 @@ DR - Delivery receipt
 - **For DR Sending** Status
 	- CSR has already issued DR and waiting for full allocation
 	- CSR has already issued DR for full allocation
-	- If everything is OK, CSR will send the PO to distributor using the action **`send_dr_conf()`**
+	- If everything is OK, CSR will send the PO to distributor using the action *send_dr_conf()*
 		- if user has id=47
 			- ODOO will create a purchase oreder of object `purchase.order`
 			- ODDOO will also create the products ofobject `product.product`
@@ -133,14 +133,14 @@ DR - Delivery receipt
 		- [x] **DR Confirmed**
 
 - **Confirmed Delivery** Status
-	- ODOO automatically read invoice and enroute from SAP. **Check CRON function `_cron_read_files`**
+	- ODOO automatically read invoice and enroute from SAP. Check CRON function *_cron_read_files()*
 	- For the read INVOICE
 		- gets invoice details from SAP such as invoice qty, line_net, invoice_no etc
 		- [x] **Invoice from SAP**
 	- For the read ENROUTE
 		- gets invoice details from SAP such as shipment, forwarder, container etc
 		- [x] **Enroute from SAP**	
-	- ODOO automatically sends invoice and enroute to distributor. **Check CRON function `_cron_send_files`**
+	- ODOO automatically sends invoice and enroute to distributor. Check CRON function *_cron_send_files()*
 	- For the send INVOICE
 		- - Check function *send_invoice()* at sap.py and sale.py  (they are connected)
 		- CRON checks PO's where invoices were not yet sent to dist
