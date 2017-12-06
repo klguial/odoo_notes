@@ -159,11 +159,20 @@ DR - Delivery receipt
 		- Will popoulate 
 
 - **Enroute** Status
-	- At the GR page. Get GR lines.
-		- Check function *get_gr_lines()*
-		- To populate GR lines
+	- At the GR page.
+		- input necessary details for the goods received such as gr_date, ga_dat, gr_no, drf_no, seal_no
+		- then the received button will appear
+		- press receive button. Check function *receive_po()*
+		- Status &rightarrow; **received**
+		- [x] **GR Confirmed**
 	- ODOO will automatically create GR to send to SAP
 		- Check function *create_gr_conf()*
 		- ODOO gets the id of PO's with a confirmed_dr status and has not yet sent a PO to SAP
+		- [x] **GR to SAP**
 		
-- **
+- **Received** Status
+	- At the GR page
+		- Check function *submit_to_dist_po()*
+		- CSR will send po to dist
+		- Status &rightarrow; **done**
+		- [x] **Received to Dist**
