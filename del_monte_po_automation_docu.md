@@ -49,7 +49,7 @@ DR - Delivery receipt
 
 - **Draft** Status
 	- (NOTHING: for PO Drafts not submitted within RDD month, must not be proceeded)
-	- PO object is `dmpi.po.sale` with inherited properties from `mail.thread` and `ir.needaction_mixin`
+	- PO object is dmpi.po.sale with inherited properties from mail.thread and ir.needaction_mixin
 	- Upon creation, ODOO PO number is created.
 		- Check function *create()* under dmpi.po.sale model
 	- On creating Purchase order, required fields must first be set before being able to choose the allocated products.
@@ -98,8 +98,8 @@ DR - Delivery receipt
 	- CSR has already issued DR for full allocation
 	- If everything is OK, CSR will send the PO to distributor using the action *send_dr_conf()*
 		- if user has id=47
-			- ODOO will create a purchase oreder of object `purchase.order`
-			- ODDOO will also create the products ofobject `product.product`
+			- ODOO will create a purchase oreder of object purchase.order
+			- ODDOO will also create the products ofobject product.product
 		- Status &rightarrow; **for_dr_sending**
 		- [x] **PO Conf to Dist**
 
