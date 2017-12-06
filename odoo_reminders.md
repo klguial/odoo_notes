@@ -97,7 +97,7 @@ value typye | object
 ### Pentaho Reports System Parameters
 key | value
 --- | ---
-pentaho.postgres.host | http://localhost:8080/pentaho-reports-for-openerp
+pentaho.server.url | http://localhost:8080/pentaho-reports-for-openerp
 pentaho.postgres.host | localhost
 pentaho.postgres.port | 5432
 pentaho.postgres.login | odoomgr
