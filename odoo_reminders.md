@@ -85,7 +85,7 @@ DMPI Central
 1. add pentaho-reports folder in the same directory as the new module
 2. install manually
 3. check if requiremnt file `/var/lib/tomcat7/webapps/perntaho-reports-for-openerp.war` exists
-4. install at destination using `wget http://toolkt.com/files/pentaho-reports-for-openerp.war`
+4. install at destination using `wget http://toolkt.com/files/pentaho-reports-for-openerp.war` or here `http://cloud1.willowit.com.au/dist/pentaho-reports-for-openerp.war`
 
 ### Pentaho Reports Parameter Usage
 key | value
