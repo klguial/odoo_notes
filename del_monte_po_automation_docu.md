@@ -176,3 +176,12 @@ DR - Delivery receipt
 		- CSR will send po to dist
 		- Status &rightarrow; **done**
 		- [x] **Received to Dist**
+
+- **Cancelled** Status
+	- To cancel PO, status must be for_dr_conf or for_delivery_conf
+	- If status is for_dr_conf
+		- [x] **PO Cancelled**
+	- If status is for_delivery_conf
+		- [x] **DR Cancelled**
+	- Status &rightarrow; **cancel** 
+
