@@ -20,6 +20,30 @@ Network Adapter - NAT (share host's IP address)
 Shared Folders - Add Folder path  
 ** shared folder viewed at /mnt/hgfs/  
 
+### Virtual Machine config
+download ubuntu16-server 64 bit . 
+open VMWare, drag ISO on it . 
+
+install vmwares tools
+
+network config
+	- add vmnet2, preference enable connect to host, subnet ip 192.168.10.0
+	- network options, select vmnet2
+	- open image file
+	- nano /etc/network/interfaces
+	- set static ip
+
+mkdir /opt/files/
+cp /mnt/hgfs/Development/Resources/odoo10-tk.sh /opt/files
+cp /mnt/hgfs/Development/Resources/odoo8-tk.sh /opt/files
+cd /opt/files
+sh odoo8-tk.sh
+sh odoo10-tk.sh
+
+sudo ln -s /mnt/<module_file> /opt/odoo8/custom
+sudo chown -R odoo8:odoo8 /opt/odoo8/custom/<module_file>
+pip install fabric
+pip install odoorpc
 
 ### Odoo service reminders
 ODOO DB PASS: `P@SSW0RD`  
