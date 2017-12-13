@@ -585,8 +585,25 @@ And use it in the context field
 <field name="context">{'search_default_group_employee_id': 1}</field>
 ```
 
-
-
+### Pivot table
+```xml
+<record id="view_dmpi_po_sale_report_pivot" model="ir.ui.view">
+ <field name="name">dmpi.po.sale.report.pivot</field>
+ <field name="model">dmpi.po.sale.report</field>
+ <field name="arch" type="xml">
+     <pivot string="Sale Analysis" disable_linking="True" display_quantity="true">
+	<field name="sold_to_name" type="row"/>
+	<field name="status" type="row"/>
+	<field name="po" type="measure"/>
+	<field name="dr" type="measure"/>
+	<field name="en" type="measure"/>
+	<field name="gr" type="measure"/>
+	<field name="inv" type="measure"/>
+	<field name="val" type="measure"/>
+     </pivot>
+ </field>
+</record>
+```
 
 
 
