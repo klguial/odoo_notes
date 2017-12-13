@@ -19,7 +19,7 @@
 
 ### Papaya Daily Recovery (Orig)
 Main Excel Sheet: RepOpStat_Orig Format
-1. Products are mainly classified as:
+1. Products are mainly classified as:  
   - Sliced (ftype, size, color, vty)
   - Chunks (ftype, color)
   - Tidbits (ftype, color, vty)
@@ -33,7 +33,7 @@ Main Excel Sheet: RepOpStat_Orig Format
   - Non-Pine Mixed Drinks
   - Tomato Products
 
-2. Products model should have the following fields:
+2. Products model should have the following fields:  
   - SAP No.
   - Size
   - Mat
@@ -51,14 +51,14 @@ Main Excel Sheet: RepOpStat_Orig Format
   - Stat Case Group
   - Reports Group
 
-3. Weekly Factors
+3. Weekly Factors  
   - Pine Solid CCF
   - Pine Juice CCF
   - Sugar Sched (kgs/Cs)
   - Pack Cutoff (Cs)
   - Pack Adjtd (Cs)
 
-4. Daily Pine Ops (More Like the Conso)
+4. Daily Pine Ops (More Like the Conso)  
   - Product Data
   - Quantity (SAP Today form)
   - Entry Quantity (SAP Today form)
