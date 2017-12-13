@@ -7,7 +7,7 @@
   - Summary of Goods Canned (RepSched)
   - Pinapple Tonnage in Metric Tons (Detailed_tonnage)
   - Direct Labor / Volume Packed (StatCs)
-  - Sugar Recovery
+  - Sugar Recovery
   
 **Papaya Opstat**
   - Papaya Daily Recovery (Papaya D)
