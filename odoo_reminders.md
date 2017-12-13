@@ -350,6 +350,17 @@ invoice = {
 }
 ```
 
+### read csv file
+```python
+def read_data(data):
+    if data:
+        fileobj = TemporaryFile('w+')
+        fileobj.write(base64.decodestring(data)) 
+        fileobj.seek(0)
+        table = csv.reader(fileobj, quotechar='"', delimiter=',')
+        return table
+```
+
 where `x` is an id
 **Using raw sql query**
 ```python
