@@ -352,6 +352,10 @@ invoice = {
 
 ### read csv file
 ```python
+from tempfile import TemporaryFile
+import csv
+import base64
+
 def read_data(data):
     if data:
         fileobj = TemporaryFile('w+')
