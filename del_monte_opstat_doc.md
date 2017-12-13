@@ -18,6 +18,4 @@
   - Weekly Highlights (WeekHi Rep)
 
 ### Papaya Daily Recovery (Orig)
-Main Excel Sheet: RepOpStat_Orig Format  
-
-
+Main Excel Sheet: RepOpStat_Orig Format
