@@ -32,4 +32,44 @@ Main Excel Sheet: RepOpStat_Orig Format
   - Material Stocks
   - Non-Pine Mixed Drinks
   - Tomato Products
-2. 
+
+2. Products model should have the following fields:
+  - SAP No.
+  - Size
+  - Mat
+  - Code
+  - Name
+  - Description
+  - Fruit Variety
+  - Fruit Type
+  - Fruit Color
+  - Combined Recovery
+  - Fruit Size
+  - Sugar Type
+  - Beverage Type
+  - Pack Material
+  - Stat Case Group
+  - Reports Group
+
+3. Weekly Factors
+  - Pine Solid CCF
+  - Pine Juice CCF
+  - Sugar Sched (kgs/Cs)
+  - Pack Cutoff (Cs)
+  - Pack Adjtd (Cs)
+
+4. Daily Pine Ops (More Like the Conso)
+  - Product Data
+  - Quantity (SAP Today form)
+  - Entry Quantity (SAP Today form)
+  - Manufacturing Date
+  - CCF solid
+  - COM CS (quantity/ccf)
+  - sugar lbs/cs (conversion: 1 kg = 2.2046 lbs)
+  - sugar kgs/cs
+  - ADD WEEKLY FACTORS
+  
+5. 
+  
+  
+  
