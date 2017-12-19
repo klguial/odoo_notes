@@ -264,6 +264,20 @@ for rec in products:
     print rec['name']
 ```
 
+###
+```python
+name = fields.Char('RGC Report Name', compute="_get_rep_name", store=True)
+date = fields.Date('Date', default=fields.Date.context_today)
+
+@api.multi
+@api.depends('date')
+def _get_rep_name(self):
+for rec in self:
+    print "passed"
+    rec.name = "RGC" + rec.date.replace("-","")
+```
+
+
 ### pad with zeros
 ```python
 number = 24
