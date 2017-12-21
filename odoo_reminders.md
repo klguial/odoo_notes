@@ -277,6 +277,10 @@ for rec in self:
     rec.name = "RGC" + rec.date.replace("-","")
 ```
 
+### time format
+```python
+date = parse(self.sale_id.rdd).strftime('%Y-%m-%d')
+```
 
 ### pad with zeros
 ```python
