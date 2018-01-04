@@ -623,6 +623,10 @@ And use it in the context field
 </record>
 ```
 
+### Add css odoo10
+```xml
+<link rel="stylesheet" href="/base/static/src/css/description.css"></link>
+``1
 
 
 
