@@ -423,6 +423,54 @@ select column_name, data_type from information_schema.columns
 where table_name = 'product_template';
 ```
 
+
+### update row in table
+```sql
+WITH nval ( "id", "parent_id", "parent_left", "parent_right", "name", "complete_name" ) AS ( VALUES ( 1109, 858, 501, 506, 'Hello', 'All Products / Seasoning' ) ),
+new_values AS ( SELECT * FROM nval )
+
+UPDATE product_category M 
+SET parent_id = nv.parent_id,
+parent_left = nv.parent_left,
+parent_right = nv.parent_right,
+NAME = nv.NAME,
+complete_name = nv.complete_name 
+FROM
+	new_values nv 
+WHERE
+	M.ID = nv.ID 
+RETURNING M.* 
+```
+
+
+### using UPSERT
+```sql
+WITH nval ( "id", "parent_id", "parent_left", "parent_right", "name", "complete_name" ) AS ( VALUES ( 1109, 858, 501, 506, 'Seasoning', 'All Products / Seasoning' ) ),
+new_values AS ( SELECT * FROM nval ),
+upsert AS (
+UPDATE product_category M 
+SET parent_id = nv.parent_id,
+parent_left = nv.parent_left,
+parent_right = nv.parent_right,
+NAME = nv.NAME,
+complete_name = nv.complete_name 
+FROM
+	new_values nv 
+WHERE
+	M.ID = nv.ID 
+RETURNING M.* 
+	) 
+
+INSERT INTO product_category ("id","parent_id","parent_left","parent_right","name","complete_name")
+SELECT "id","parent_id","parent_left","parent_right","name","complete_name"
+FROM new_values
+WHERE NOT EXISTS (SELECT 1 
+FROM upsert up
+WHERE up.id = new_values.id)
+```
+
+
+
 ## xml_codes
 ### create pentaho report
 ```xml
