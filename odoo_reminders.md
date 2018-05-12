@@ -25,6 +25,7 @@ download ubuntu16-server 64 bit .
 open VMWare, drag ISO on it . 
 
 install vmwares tools
+http://toolkt.com/site/installing-vmware-tools-in-an-ubuntu-virtual-machine-1022525/
 
 network config
 	- add vmnet2, preference enable connect to host, subnet ip 192.168.10.0
